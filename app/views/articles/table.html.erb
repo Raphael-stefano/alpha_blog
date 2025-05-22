@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Articles" %>
+
+<h1>Articles</h1>
+
+<table class="table mb-3">
+  <thead>
+    <tr>
+      <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan="3" class="text-center">Actions</th>
+    </tr>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <% @articles.each do |article| %>
+        <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><%= link_to "Show article", article, class: "btn btn-outline-info" %></td>
+        <td><%= link_to "Edit article", edit_article_path(article), class: "btn btn-outline-success" %></td>
+        <td><%= button_to "Destroy article", article, method: :delete, class: "btn btn-outline-danger" %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New article", new_article_path %>

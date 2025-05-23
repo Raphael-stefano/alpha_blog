@@ -1,27 +1,41 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<%= form_with(model: article, html: { class: "mt-4" }) do |form| %>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= render "shared/errors", object: article %>
+
+  <div class="container d-flex justify-content-center">
+
+    <div class="d-flex shadow-lg" style="height: 400px; width: 90%;">
+
+      <div style="height: 100%; width: 40%; background: #013a33;" class="d-flex flex-column align-items-start justify-content-around px-4">
+          <h3 class="text-uppercase text-white"><%= local_assigns[:form_title] || @form_title || "Deu ruim" %></h3>
+          <div class="d-flex flex-column align-items-start justify-content-center">
+            <p class=""><i style="color: #deac50" class="bi bi-person fs-4"></i> Author: Raphael Erbetta</p>
+            <p class=""><i style="color: #deac50" class="bi bi-envelope fs-4"></i> E-mail: raphaelestefano@gmail.com</p>
+            <p class=""><i style="color: #deac50" class="bi bi-telephone fs-4" fs-3"></i> Tel: +5522999363490</p>
+          </div>
+          <%= link_to "Git Hub repository", "https://github.com/Raphael-stefano/alpha_blog", class: "text-decoration-none text-light" %>
+      </div>
+
+      <div style="height: 100%; width: 60%;" class=" d-flex flex-column align-items-start justify-content-center px-4 bg-white text-dark">
+
+          <div class="w-100">
+            <%= form.label :title, style: "display: block", class: "form-label" %>
+            <%= form.text_field :title, class: "form-control shadow-sm", placeholder: "Title of the Article" %>
+          </div>
+
+          <div class="w-100 mt-3 mb-4">
+            <%= form.label :description, style: "display: block", class: "form-label" %>
+            <%= form.textarea :description, class: "form-control shadow-sm", rows: "7", placeholder: "Description of the Article" %>
+          </div>
+
+          <div>
+            <%= form.submit class: "btn btn-warning" %>
+          </div>
+        
+      </div>
+
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -1,0 +1,15 @@
+<% if object.errors.any? %>
+    <div class="container d-flex justify-content-center mb-4">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 90%;">
+
+        <h2><%= pluralize(object.errors.count, "error") %> prohibited this action from being concluded:</h2>
+        <ul>
+            <% object.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+    </div>
+  <% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :articles do
     collection do
-      get "articles_table", to: "articles#table"
+      get "table", to: "articles#table"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

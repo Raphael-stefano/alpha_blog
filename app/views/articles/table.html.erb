@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Articles" %>
 
 <div class="d-flex flex-column align-items-center">
@@ -19,9 +17,9 @@
                     <tr>
                         <td><%= article.title %></td>
                         <td><%= truncate(article.description, length: 150) %></td>
-                        <td><%= link_to "Show article", article, class: "btn btn-outline-info" %></td>
+                        <td><%= link_to "Show article", article_path(article), class: "btn btn-outline-info" %></td>
                         <td><%= link_to "Edit article", edit_article_path(article), class: "btn btn-outline-success" %></td>
-                        <td><%= button_to "Destroy article", article, method: :delete, class: "btn btn-outline-danger" %></td>
+                        <td><%= button_to "Destroy article", article_path(article), method: :delete, class: "btn btn-outline-danger" %></td>
                     </tr>
                 <% end %>
             </tbody>

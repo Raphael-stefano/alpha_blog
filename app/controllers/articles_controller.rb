@@ -3,10 +3,17 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
+    if params[:from_index]
+      session.delete(:from_table)
+    end
+    if session[:from_table]
+      redirect_to table_articles_path
+    end
     @articles = Article.all
   end
 
   def table
+    session[:from_table] = true
     @articles = Article.all
   end
 
